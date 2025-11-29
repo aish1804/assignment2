@@ -13,8 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * JUnit test suite for the refactored restaurant system using Observer Pattern
- * Tests verify that the Observer pattern is correctly implemented and
- * that no functionality was lost during refactoring
  */
 @DisplayName("Restaurant Observer Pattern Tests")
 class RestaurantObserverTest {
@@ -31,7 +29,6 @@ class RestaurantObserverTest {
         customer1 = new Customer("Alice", "alice@test.com", new Phone(814, 1111));
         customer2 = new Customer("Bob", "bob@test.com", new Phone(814, 2222));
 
-        // Capture console output for testing
         outputStream = new ByteArrayOutputStream();
         originalOut = System.out;
         System.setOut(new PrintStream(outputStream));
@@ -63,7 +60,7 @@ class RestaurantObserverTest {
     }
 
     @Test
-    @Timeout(6) // Ensures test doesn't hang due to infinite loops
+    @Timeout(6) 
     @DisplayName("Observer should be notified when food is prepared")
     void testFoodPreparationNotifiesObservers() throws InterruptedException {
         restaurant.seatIn(customer1);
@@ -170,15 +167,12 @@ class RestaurantObserverTest {
     @Timeout(6)
     @DisplayName("No busy waiting loop should exist (performance test)")
     void testNoBusyWaiting() throws InterruptedException {
-        // Critical test: Verify that the refactored code doesn't use busy waiting
         restaurant.seatIn(customer1);
 
         long startTime = System.currentTimeMillis();
         restaurant.prepareFood();
         long endTime = System.currentTimeMillis();
 
-        // Should take approximately 5 seconds (sleep time)
-        // Not significantly more due to busy waiting
         long duration = endTime - startTime;
         assertTrue(duration >= 5000 && duration < 5500,
                 "Duration should be close to 5000ms (no busy waiting), was: " + duration + "ms");
@@ -187,13 +181,11 @@ class RestaurantObserverTest {
     @Test
     @DisplayName("Observer callback should be properly invoked")
     void testCustomerNotificationCallback() throws InterruptedException {
-        // Test that the observer callback is properly invoked
         restaurant.seatIn(customer1);
 
         restaurant.prepareFood();
 
         String output = outputStream.toString();
-        // Verify the entire notification flow
         assertTrue(output.contains("Alice has been notified that Chicken Soup is ready!"),
                 "Complete notification message should be displayed");
     }
@@ -201,7 +193,6 @@ class RestaurantObserverTest {
     @Test
     @DisplayName("Preparing food without observers should not cause errors")
     void testNoNotificationWithoutObservers() throws InterruptedException {
-        // Test that preparing food without observers doesn't cause errors
         assertDoesNotThrow(() -> restaurant.prepareFood(),
                 "Should not throw exception when no observers");
         assertTrue(restaurant.isFoodReady(), "Food should still be ready");
@@ -224,7 +215,7 @@ class RestaurantObserverTest {
         List<Customer> customers = restaurant.getCustomers();
         int originalSize = customers.size();
 
-        // Try to modify the returned list
+        // modify the returned list
         customers.add(customer2);
 
         // Original list should not be affected

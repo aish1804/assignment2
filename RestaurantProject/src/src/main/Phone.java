@@ -1,9 +1,5 @@
 package RefactoringDesignPatterns.RestaurantProject.src.src.main;
 
-/**
- * Phone class - Value object representing a phone number
- * Enhanced with equals, hashCode, and toString methods
- */
 public class Phone {
     private final int areaCode;
     private final int number;

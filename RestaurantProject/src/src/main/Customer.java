@@ -4,9 +4,7 @@ import RefactoringDesignPatterns.Assignment2.ErieFamousRestaurant;
 import RefactoringDesignPatterns.Assignment2.phone;
 
 /**
- * Customer class implementing FoodObserver
- * Customers are now observers that get notified when food is ready
- * instead of having to poll for status
+ Customer class implementing FoodObserver
  */
 public class Customer implements FoodObserver {
     private final String name;
@@ -32,18 +30,13 @@ public class Customer implements FoodObserver {
     }
 
     /**
-     * Customer eats the food
+     Customer eats the food
      */
     public void eat() {
         System.out.println(name + " is eating... ...!");
     }
 
-    /**
-     * Observer pattern callback - called when food is ready
-     * This method is automatically invoked by the Restaurant when food is prepared
-     * @param restaurant The restaurant that prepared the food
-     * @param foodName The name of the food that was prepared
-     */
+   
     @Override
     public void onFoodReady(Restaurant restaurant, String foodName) {
         System.out.println(name + " has been notified that " + foodName + " is ready!");
