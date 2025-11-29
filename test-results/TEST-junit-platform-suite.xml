@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="JUnit Platform Suite" tests="0" skipped="0" failures="0" errors="0" time="0.001" hostname="HPLaptop" timestamp="2025-11-28T19:23:58">
+<properties>
+<property name="file.encoding" value="UTF-8"/>
+<property name="file.separator" value="\"/>
+<property name="java.class.path" value="junit-platform-console-standalone.jar"/>
+<property name="java.class.version" value="69.0"/>
+<property name="java.home" value="C:\Program Files\Eclipse Adoptium\jdk-25.0.0.36-hotspot"/>
+<property name="java.io.tmpdir" value="C:\Users\aishw\AppData\Local\Temp\"/>
+<property name="java.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-25.0.0.36-hotspot\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\aishw\bin;C:\Program Files\Eclipse Adoptium\jdk-25.0.0.36-hotspot\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python313\Scripts\;C:\Python313\;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\HP\HP One Agent;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Users\aishw\AppData\Local\Microsoft\WindowsApps;C:\Users\aishw\AppData\Local\GitHubDesktop\bin;C:\Users\aishw\AppData\Roaming\npm;C:\Users\aishw\AppData\Local\Programs\mongosh\;C:\Users\aishw\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\SciTools\bin\pc-win64;C:\Program Files\JetBrains\PyCharm 2025.2.4\bin;c:\Users\aishw\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\aishw\.vscode\extensions\vscjava.vscode-java-debug-0.58.3\bundled\scripts\noConfigScripts;."/>
+<property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+<property name="java.runtime.version" value="25+36-LTS"/>
+<property name="java.specification.name" value="Java Platform API Specification"/>
+<property name="java.specification.vendor" value="Oracle Corporation"/>
+<property name="java.specification.version" value="25"/>
+<property name="java.vendor" value="Eclipse Adoptium"/>
+<property name="java.vendor.url" value="https://adoptium.net/"/>
+<property name="java.vendor.url.bug" value="https://github.com/adoptium/adoptium-support/issues"/>
+<property name="java.vendor.version" value="Temurin-25+36"/>
+<property name="java.version" value="25"/>
+<property name="java.version.date" value="2025-09-16"/>
+<property name="java.vm.compressedOopsMode" value="Zero based"/>
+<property name="java.vm.info" value="mixed mode, sharing"/>
+<property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+<property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+<property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+<property name="java.vm.specification.version" value="25"/>
+<property name="java.vm.vendor" value="Eclipse Adoptium"/>
+<property name="java.vm.version" value="25+36-LTS"/>
+<property name="jdk.debug" value="release"/>
+<property name="line.separator" value="
+"/>
+<property name="native.encoding" value="Cp1252"/>
+<property name="os.arch" value="amd64"/>
+<property name="os.name" value="Windows 11"/>
+<property name="os.version" value="10.0"/>
+<property name="path.separator" value=";"/>
+<property name="stderr.encoding" value="cp437"/>
+<property name="stdin.encoding" value="cp437"/>
+<property name="stdout.encoding" value="cp437"/>
+<property name="sun.arch.data.model" value="64"/>
+<property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-25.0.0.36-hotspot\bin"/>
+<property name="sun.cpu.endian" value="little"/>
+<property name="sun.cpu.isalist" value="amd64"/>
+<property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+<property name="sun.java.command" value="junit-platform-console-standalone.jar --class-path build/classes;build/test-classes --scan-class-path --reports-dir test-results"/>
+<property name="sun.java.launcher" value="SUN_STANDARD"/>
+<property name="sun.jnu.encoding" value="Cp1252"/>
+<property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+<property name="sun.os.patch.level" value=""/>
+<property name="user.country" value="US"/>
+<property name="user.dir" value="C:\Users\aishw\Downloads\Assignment2"/>
+<property name="user.home" value="C:\Users\aishw"/>
+<property name="user.language" value="en"/>
+<property name="user.name" value="aishw"/>
+<property name="user.script" value=""/>
+<property name="user.timezone" value="America/New_York"/>
+<property name="user.variant" value=""/>
+</properties>
+<system-out><![CDATA[
+unique-id: [engine:junit-platform-suite]
+display-name: JUnit Platform Suite
+]]></system-out>
+</testsuite>
