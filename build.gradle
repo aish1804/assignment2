@@ -33,7 +33,10 @@ sourceSets {
 // Use Java toolchain matching local JDK to avoid classfile compatibility issues
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(22)
+        // Use Java 17 to match common Jenkins agents (OpenJDK 17 is available on many CI images).
+        // If you have a different Java version on the agent, change this value accordingly
+        // or install the required JDK (22) on the agent.
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
