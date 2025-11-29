@@ -15,6 +15,8 @@ pipeline {
                 echo 'Building project (prefer ./gradlew)'
                 script {
                     if (fileExists('./gradlew')) {
+                        // Ensure the Gradle wrapper is executable on the agent
+                        sh 'chmod +x ./gradlew || true'
                         sh './gradlew clean assemble --console=plain'
                     } else if (sh(returnStatus: true, script: 'gradle --version') == 0) {
                         sh 'gradle clean assemble --console=plain'
@@ -35,6 +37,8 @@ pipeline {
                 echo 'Running tests (Gradle preferred; fallback to JUnit Console)'
                 script {
                     if (fileExists('./gradlew')) {
+                        // Ensure the Gradle wrapper is executable on the agent
+                        sh 'chmod +x ./gradlew || true'
                         sh './gradlew test --console=plain'
                     } else if (sh(returnStatus: true, script: 'gradle --version') == 0) {
                         sh 'gradle test --console=plain'
