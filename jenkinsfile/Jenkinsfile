@@ -1,0 +1,79 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'VERSION', defaultValue:"1.0.0", description: "Build Version")
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Stage: Build -- Step1: Starting build... ...'
+                script {
+                    if (fileExists('./gradlew')) {
+                        sh './gradlew build'
+                    } else if (sh(returnStatus: true, script: 'gradle --version') == 0) {
+                        sh 'gradle build'
+                    } else {
+                        // Fallback: compile sources with javac
+                        sh '''
+                        mkdir -p build/classes
+                        find src/main/java -name '*.java' | xargs -r javac -d build/classes
+                        '''
+                    }
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Stage Test -- Step1: Starting testing... ...'
+                script {
+                    if (fileExists('./gradlew')) {
+                        sh './gradlew test'
+                    } else if (sh(returnStatus: true, script: 'gradle --version') == 0) {
+                        sh 'gradle test'
+                    } else {
+                        // Manual JUnit Platform Console fallback. This will download the console jar,
+                        // compile any tests under RestaurantProject/src/src/test (if present),
+                        // run them and write XML reports to test-results/ for Jenkins to consume.
+                        sh '''
+                        set -e
+                        mkdir -p test-results build/test-classes
+                        CONSOLE_JAR=junit-platform-console-standalone.jar
+                        if [ ! -f "$CONSOLE_JAR" ]; then
+                          echo "Downloading JUnit Platform Console Standalone..."
+                          curl -sSfL -o "$CONSOLE_JAR" "https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.9.3/junit-platform-console-standalone-1.9.3.jar"
+                        fi
+
+                        # Compile main sources if not already compiled
+                        mkdir -p build/classes
+                        find src/main/java -name '*.java' | xargs -r javac -d build/classes || true
+
+                        # Compile test sources (non-standard test path in this repo)
+                        if [ -d RestaurantProject/src/src/test ]; then
+                          find RestaurantProject/src/src/test -name '*.java' | xargs -r javac -cp build/classes:"$CONSOLE_JAR" -d build/test-classes || true
+                        fi
+
+                        # Run tests and write xml reports to test-results/
+                        java -jar "$CONSOLE_JAR" --class-path build/classes:build/test-classes --scan-class-path --reports-dir test-results || true
+                        '''
+                    }
+                }
+            }
+            post {
+                always {
+                    // Publish XML results from Gradle or the fallback runner
+                    junit allowEmptyResults: true, testResults: '**/build/test-results/**/TEST-*.xml,**/test-results/*.xml'
+                    // If Gradle produced an HTML report, publish it when present
+                    publishHTML {
+                        reportDir: 'build/reports/tests/test'
+                        reportFiles: 'index.html'
+                        reportName: 'Test Report'
+                        alwaysLinkToLastBuild: true
+                        allowMissing: true
+                        keepAll: true
+                    }
+                }
+            }
+        }
+    }

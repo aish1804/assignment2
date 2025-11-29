@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Move junit 4 to test scope (if any legacy tests require it)
+    testImplementation 'junit:junit:4.13.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+// Include nonstandard test folder used by this repo
+sourceSets {
+    test {
+        java {
+            srcDirs += ['src/test/java', 'RestaurantProject/src/src/test']
+        }
+    }
+}
+
+// Use Java toolchain matching local JDK to avoid classfile compatibility issues
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(22)
+    }
+}
+
+// Application configuration so `gradle run` can execute the demo
+application {
+    // Main class for the demo (package: restaurant)
+    mainClass = 'restaurant.Client'
+}

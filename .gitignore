@@ -1,0 +1,24 @@
+# Java build artifacts
+/build/
+/out/
+*.class
+
+# Gradle
+/.gradle/
+gradle-app.setting
+
+# IntelliJ
+/.idea/
+*.iml
+
+# OS metadata
+__MACOSX/
+.DS_Store
+
+# JUnit and console jars (local downloads)
+junit-platform-console-standalone*.jar
+
+# Eclipse
+.classpath
+.project
+.settings/
