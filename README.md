@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Assignment2 — Restaurant Observer Demo
 
 This project demonstrates a small refactor of a restaurant/customer system using the Observer pattern. It includes a runnable demo and a JUnit test suite.
@@ -6,7 +7,7 @@ Files of interest
 - `src/main/java/restaurant` — runnable demo (Client, Restaurant, ErieFamousRestaurant, Customer, Phone, FoodObserver).
 - `src/main/java/RefactoringDesignPatterns/Assignment2` — classes used by the provided JUnit tests (Customer, Phone, ErieFamousRestaurant, Restaurant, FoodObserver).
 - `RestaurantProject/src/src/test` — JUnit 5 tests (RestaurantObserverTest.java).
-- `jenkinsfile/Jenkinsfile` — CI pipeline updated to publish test results and handle cases where Gradle wrapper is not present.
+- `jenkinsfile/Jenkinsfile` — original CI pipeline (kept for history); a root-level `Jenkinsfile` may be added so Jenkins can pick it by default.
 
 Run locally (no Gradle required)
 1. Compile the demo classes and tests (bash on Windows):
@@ -30,7 +31,8 @@ cd /c/Users/aishw/Downloads/Assignment2
 Notes
 - I removed macOS metadata (`__MACOSX`) that caused javac errors.
 - I added a `.gitignore` to avoid committing build and IDE artifacts.
-- Tests now run via Gradle; I added the nonstandard test source dir to `build.gradle` because tests are located in `RestaurantProject/src/src/test`.
-- CI Jenkinsfile was updated to be robust: prefers `./gradlew`, falls back to system `gradle`, and otherwise runs tests using the JUnit Console Launcher and publishes results.
+- Tests now run via Gradle; the build was adjusted to include a nonstandard test source directory because tests are located in `RestaurantProject/src/src/test`.
+- CI: a robust `Jenkinsfile` that prefers `./gradlew`, falls back to `gradle`, and includes a JUnit Console fallback is available in the repo root.
 
-If you want me to tidy package/layout (move all sources to a single canonical package structure), or to remove legacy duplicates, I can do that next.
+If you want me to tidy the package/layout (move all sources to a single canonical package structure) or remove legacy duplicates, I can do that next.
+
